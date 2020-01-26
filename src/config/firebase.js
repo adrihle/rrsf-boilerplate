@@ -1,8 +1,8 @@
-import firebase from 'firebase/app'
+import { initializeApp } from 'firebase/app'
 import ReduxSagaFirebase from 'redux-saga-firebase'
 import 'firebase/firestore'
 
-var firebaseApp = firebase.initializeApp({
+var firebaseApp = initializeApp({
   apiKey: "AIzaSyA-ByqAqFtmlvH7WkpDGXXlYtCgSrO9ulw",
   authDomain: "sample-2-f2cea.firebaseapp.com",
   databaseURL: "https://sample-2-f2cea.firebaseio.com",

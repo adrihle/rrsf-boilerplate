@@ -2,6 +2,7 @@ const routes = {
     APP: {
         LANDING: '/',
         HOME: '/home',
+        TODO: '/todo',
         PROFILE: '/profile'
     },
     LOGIN: {

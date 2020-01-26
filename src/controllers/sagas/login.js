@@ -1,28 +1,39 @@
-import { takeEvery, takeLatest, put, call, fork, take } from 'redux-saga/effects'
-// import { push } from 'react-router-redux'
+import { takeLatest, put, call, fork, take } from 'redux-saga/effects'
+import { push } from 'connected-react-router'
 
 //firebase dependencies
-import firebase from 'firebase'
+import { auth } from 'firebase'
 import rsf from '../../config/firebase'
 
 //importing actions
 import { loginFailure, loginSuccess } from '../actions/login'
-import { syncUser } from '../actions/sync-user'
+import { syncUser } from '../actions/sync'
+import { logoutFailure, logoutSuccess } from '../actions/logout'
 
 //importing constants
-import { types } from '../../constants'
+import { types, routes } from '../../constants'
 
 //instance of a facebook auth provider
-const authProvider = new firebase.auth.FacebookAuthProvider()
+const authProvider = new auth.FacebookAuthProvider()
 
 function* loginSaga(){
     try {
-        const data = yield call(rsf.auth.signInWithPopup, authProvider)
         
+        const data = yield call(rsf.auth.signInWithPopup, authProvider)
         yield put(loginSuccess(data))
         // yield put(push('some-route'))
     } catch (err) {
         yield put(loginFailure(err))
+    }
+}
+
+function* logoutSaga(){
+    try {
+        const data = yield call(rsf.auth.signOut)
+        yield put(logoutSuccess(data))
+        yield put(push(routes.APP.LANDING))
+    } catch (err) {
+        yield put(logoutFailure(err))
     }
 }
 
@@ -36,6 +47,7 @@ function* syncUserSaga(){
 
         if (user){
             yield put(syncUser(user))
+            yield put(push(routes.APP.TODO))
         }else {
             yield put(syncUser(null))
         }
@@ -45,4 +57,5 @@ function* syncUserSaga(){
 export default function* (){
     yield fork(syncUserSaga)
     yield takeLatest(types.LOGIN.REQUEST, loginSaga)
+    yield takeLatest(types.LOGOUT.REQUEST, logoutSaga)
 }

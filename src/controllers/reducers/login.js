@@ -12,6 +12,7 @@ export default function (state = initialState, action){
     switch (action.type){
 
         case types.LOGIN.REQUEST:
+        case types.LOGOUT.REQUEST:
             return {
                 ...state,
                 loading: true,
@@ -26,10 +27,18 @@ export default function (state = initialState, action){
             }
         
         case types.LOGIN.FAILURE:
+        case types.LOGOUT.FAILURE:
             return {
                 ...state,
                 loading: false,
-                message: action.error.message
+                message: action.err.message
+            }
+
+        case types.LOGOUT.SUCCESS:
+            return {
+                ...state,
+                loading: false,
+                auth: false
             }
 
         case types.SYNC_USER:

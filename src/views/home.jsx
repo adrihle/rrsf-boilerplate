@@ -1,9 +1,9 @@
-import React, { useState, useEffect } from 'react'
+import React from 'react'
 import { SubmitButton, Paper, TextInput, Form } from '../components'
 
-import { schema } from '../config/validation'
+import { signInSchema as schema } from '../config/validation'
 
-import { useDispatch, useSelector } from 'react-redux'
+import { useDispatch } from 'react-redux'
 import { login } from '../controllers/actions/login'
 
 // import firebase from '../config/firebase'
@@ -32,7 +32,6 @@ import { login } from '../controllers/actions/login'
 const Home = () => {
     // const state = FetchData()
     const dispatch = useDispatch()
-    const user = useSelector(state => state.login.user)
 
     const onSubmit = data => {
         // firebase
@@ -48,7 +47,6 @@ const Home = () => {
 
     return (
         <Paper id='form-paper'>
-            <h3>Welcome {user ? user.displayName : ''}</h3>
             {/* { state.map(item => <p key={item.id}>{item.email}</p>)} */}
             <h3>Firebase Form</h3>
             <Form onSubmit={onSubmit} schema={schema}>
@@ -56,7 +54,7 @@ const Home = () => {
                 <TextInput label='email' name='email' />
                 <SubmitButton text='Submit' />
             </Form>
-            <button onClick={onClick}>Sign with Facebook</button>
+            <SubmitButton onClick={onClick} text='Sign with Facebook'/>
         </Paper>
     )
 }

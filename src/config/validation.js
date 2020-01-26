@@ -1,5 +1,10 @@
 import * as yup from 'yup'
 
-export const schema = yup.object().shape({
-    email: yup.string().email().required()
+export const todoSchema = yup.object().shape({
+    todo: yup.string()
+})
+
+export const signInSchema = yup.object().shape({
+    email: yup.string().email().required(),
+    password: yup.string().required()
 })
