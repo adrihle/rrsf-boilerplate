@@ -1,14 +1,12 @@
 const routes = {
     APP: {
         LANDING: '/',
-        HOME: '/home',
-        TODO: '/todo',
-        PROFILE: '/profile'
+        HOME: '/home'
     },
-    LOGIN: {
-        SIGNIN: '/signin',
-        SIGNUP: '/signup',
-    }
+    LOGIN: '/login',
+    POST: '/post',
+    PROFILE: '/profile'
+
 }
 
 export default routes

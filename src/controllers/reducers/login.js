@@ -12,13 +12,15 @@ export default function (state = initialState, action){
     switch (action.type){
 
         case types.LOGIN.REQUEST:
+        case types.FB_LOGIN.REQUEST:
         case types.LOGOUT.REQUEST:
             return {
                 ...state,
                 loading: true,
                 message: null
             }
-
+        
+        case types.FB_LOGIN.SUCCESS:
         case types.LOGIN.SUCCESS:
             return {
                 ...state,
@@ -28,6 +30,7 @@ export default function (state = initialState, action){
         
         case types.LOGIN.FAILURE:
         case types.LOGOUT.FAILURE:
+        case types.FB_LOGIN.FAILURE:
             return {
                 ...state,
                 loading: false,

@@ -1,4 +1,4 @@
-import { takeLatest, call, put, take, fork } from 'redux-saga/effects'
+import { takeLatest, call, put, fork } from 'redux-saga/effects'
 
 import { addTodoSuccess, addTodoFailure } from '../actions/todo'
 import { syncTodos } from '../actions/sync'

@@ -1,8 +1,12 @@
 import React from 'react'
-import { SignIn } from '../containers'
+import { SignIn, SignUp } from '../containers'
+import { Tabs } from '../components'
 
 export default function(){
     return (
-        <SignIn />
+        <Tabs>
+            <SignIn label='SignIn'/>
+            <SignUp label='SignUp'/>
+        </Tabs>
     )
 }

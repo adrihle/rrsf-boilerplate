@@ -21,7 +21,7 @@ ReactDOM.render(
 
     <Provider store={store}>
         <ThemeProvider theme={theme}>
-            <Router />
+            <Router id='app'/>
         </ThemeProvider>
     </Provider>
 

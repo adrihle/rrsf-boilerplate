@@ -4,7 +4,7 @@ export default createMuiTheme({
     palette: {
         type: 'dark',
         primary: {
-            main: '#079992'
+            main: '#f39c12'
         }
     },
     spacing: 4

@@ -6,18 +6,24 @@ import { history } from './controllers/store'
 import { routes } from './constants'
 
 import Login from './views/login'
-import ToDo from './views/todo'
+import Home from './views/home'
+import Post from './views/post'
+import { NavBar } from './containers'
 
 function App() {
   return (
-    <ConnectedRouter history={history}>
-      <Router history={history}>
-        <Switch>
-          <Route exact path={routes.APP.LANDING} component={Login} />
-          <Route exact path={routes.APP.TODO} component={ToDo}/>
-        </Switch>
-      </Router>
-    </ConnectedRouter>
+      <ConnectedRouter history={history}>
+        <Router history={history}>
+          <NavBar history={history}/>
+          <div id='app'>
+          <Switch>
+            <Route exact path={routes.APP.LANDING} component={Home} />
+            <Route exact path={routes.LOGIN} component={Login} />
+            <Route exact path={routes.POST} component={Post} />
+          </Switch>
+          </div>
+        </Router>
+      </ConnectedRouter>
   );
 }
 
