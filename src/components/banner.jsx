@@ -19,7 +19,10 @@ export default function ({ upload, getImage }) {
     const [image, setImage] = useState(banner)
     const classes = useStyles()
 
-    const onChange = e => setImage(URL.createObjectURL(e.target.files[0]))
+    const onChange = e => {
+        getImage(e.target.files[0])
+        setImage(URL.createObjectURL(e.target.files[0]))
+    }
 
     return (
         <React.Fragment>

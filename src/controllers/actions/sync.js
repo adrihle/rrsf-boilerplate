@@ -5,7 +5,7 @@ export const syncUser = user => ({
     user
 })
 
-export const syncTodos = todos => ({
-    type: types.SYNC_TODOS,
-    todos
+export const syncPosts = posts => ({
+    type: types.SYNC_POSTS,
+    posts
 })

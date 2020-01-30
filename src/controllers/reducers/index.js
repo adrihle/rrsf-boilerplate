@@ -1,12 +1,12 @@
 import { combineReducers } from 'redux'
 import { connectRouter } from 'connected-react-router'
 import login from './login'
-import todo from './todo'
+import posts from './post'
 
 const rootReducer = history => combineReducers({
     router: connectRouter(history),
     login,
-    todo
+    posts
 })
 
 export default rootReducer

@@ -1,10 +1,10 @@
 import { fork } from 'redux-saga/effects'
 import login from './login'
-import addTodo from './todo'
+import addPost from './post'
 import register from './register'
 
 export default function* (){
     yield fork(login)
-    yield fork(addTodo)
     yield fork(register)
+    yield fork(addPost)
 }
